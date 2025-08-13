@@ -1,8 +1,5 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { ArrowRight, ExternalLink } from "lucide-react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
 
 /* ========== Promo Cards ========== */
 
@@ -95,7 +92,7 @@ function PromoCards({ cards = defaultCards, className }: PromoProps) {
   );
 }
 
-/* ========== Services Section (GSAP horizontal scroll like your example) ========== */
+/* ========== Services Section (auto-scroll marquee with arch cards) ========== */
 
 export function Services() {
   const services = [
@@ -135,49 +132,33 @@ export function Services() {
     },
   ];
 
-  const wrapperRef = useRef<HTMLDivElement>(null); // pinned section
-  const trackRef = useRef<HTMLDivElement>(null);   // flex track containing panels
-
-  useEffect(() => {
-    // Only on md+ and if user doesn’t prefer reduced motion
-    const mdUp = window.matchMedia("(min-width: 768px)").matches;
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (!mdUp || reduced) return;
-
-    const wrapper = wrapperRef.current;
-    const track = trackRef.current;
-    if (!wrapper || !track) return;
-
-    const panels = gsap.utils.toArray<HTMLElement>(".service-panel");
-    if (panels.length <= 1) return;
-
-    // Animate panels with xPercent like your example
-    const tween = gsap.to(panels, {
-      xPercent: -100 * (panels.length - 1),
-      ease: "none",
-      scrollTrigger: {
-        trigger: wrapper,
-        pin: true,
-        scrub: 1,
-        snap: 1 / (panels.length - 1),
-        invalidateOnRefresh: true,
-        end: () => "+=" + (track.scrollWidth - window.innerWidth),
-      },
-    });
-
-    const onResize = () => ScrollTrigger.refresh();
-    window.addEventListener("resize", onResize);
-
-    return () => {
-      window.removeEventListener("resize", onResize);
-      tween.scrollTrigger?.kill();
-      tween.kill();
-    };
-  }, []);
+  // Duplicate once for seamless loop
+  const loop = [...services, ...services];
 
   return (
     <>
       <PromoCards className="pt-12 md:pt-16 pb-0" />
+
+      {/* Inline keyframes for auto-scroll */}
+      <style>{`
+        @keyframes scroll-left {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .marquee { position: relative; overflow: hidden; }
+        .marquee-track {
+          display: flex;
+          gap: 1.5rem;
+          will-change: transform;
+          animation: scroll-left 32s linear infinite;
+          padding: 0 1.5rem; /* matches px-6 around panels */
+        }
+        .marquee:hover .marquee-track { animation-play-state: paused; }
+        @media (max-width: 768px) { .marquee-track { animation-duration: 38s; } }
+        @media (prefers-reduced-motion: reduce) {
+          .marquee-track { animation: none; transform: translateX(0) !important; }
+        }
+      `}</style>
 
       <section
         id="services"
@@ -192,51 +173,54 @@ export function Services() {
           </h2>
         </div>
 
-        {/* Pinned wrapper on md+; native horizontal scroll on mobile */}
-        <div
-          ref={wrapperRef}
-          className="relative md:h-[560px] h-[460px] md:overflow-hidden"
-        >
-          <div
-            ref={trackRef}
-            className="flex h-full overflow-x-auto md:overflow-visible scroll-smooth"
-            style={{ scrollSnapType: "x mandatory" }}
-          >
-            {services.map((s, i) => (
+        {/* Auto-scrolling marquee of ARCH cards */}
+        <div className="marquee">
+          {/* Optional fade edges */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-rose-50 to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-white to-transparent" />
+
+          <div className="marquee-track">
+            {loop.map((s, i) => (
               <section
-                key={i}
-                className="service-panel flex-shrink-0 w-screen h-full flex items-center justify-center px-6"
+                key={`${s.title}-${i}`}
+                className="flex-shrink-0 w-[22rem] sm:w-[26rem] lg:w-[28rem] h-full"
               >
-                <div className="w-[22rem] sm:w-[26rem] lg:w-[28rem] bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                  <div className="relative overflow-hidden">
+                {/* Arch-style card */}
+                <div className="group flex h-full flex-col">
+                  {/* Arch image frame */}
+                  <div className="relative overflow-hidden rounded-t-full rounded-b-none bg-neutral-100 aspect-[3/4]">
                     <img
                       src={s.image}
                       alt={s.title}
-                      className="w-full h-64 object-cover hover:scale-110 transition-transform duration-500"
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.06]"
                     />
                   </div>
 
-                  <div className="p-6">
+                  {/* Title underline */}
+                  <div className="mt-5 border-b border-gray-900/80 pb-3">
                     <h3
-                      className="text-2xl font-serif text-gray-900 mb-3 text-center"
+                      className="text-xl md:text-2xl font-serif text-gray-900"
                       style={{ fontFamily: "Cormorant Garamond, serif" }}
                     >
                       {s.title}
                     </h3>
-                    <p className="text-gray-600 leading-relaxed mb-6 text-center">
-                      {s.desc}
-                    </p>
-                    <div className="text-center">
-                      <a
-                        href="https://enhakkore.in/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center bg-rose-600 text-white px-6 py-2 rounded-full font-medium hover:bg-rose-700 transition duration-300 space-x-2"
-                      >
-                        <span>Visit Store</span>
-                        <ExternalLink size={16} />
-                      </a>
-                    </div>
+                  </div>
+
+                  {/* Description */}
+                  <p className="pt-3 text-gray-700 leading-relaxed">
+                    {s.desc}
+                  </p>
+
+                  {/* CTA pinned to bottom */}
+                  <div className="pt-3 mt-auto">
+                    <a
+                      href="https://enhakkore.in/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-gray-800 hover:underline"
+                    >
+                      Visit Store →
+                    </a>
                   </div>
                 </div>
               </section>
