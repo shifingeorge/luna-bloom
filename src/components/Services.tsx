@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { ArrowRight, ExternalLink } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 /* ========== Promo Cards ========== */
 
@@ -69,18 +72,15 @@ function PromoCards({ cards = defaultCards, className }: PromoProps) {
               className="absolute inset-0 h-full w-full object-cover"
             />
             <div className="absolute inset-0 bg-black/35 transition-colors duration-300 group-hover:bg-black/45" />
-
             <div className="relative z-10 flex h-full flex-col justify-end p-6 sm:p-7">
               <p className="font-medium text-white/90 uppercase tracking-wide">
                 {card.eyebrow}
               </p>
-
               <h3 className="mt-1 font-serif text-3xl sm:text-4xl leading-tight text-white">
                 <span>{card.title}</span>
                 <br />
                 <span className="font-semibold text-white/95">{card.subtitle}</span>
               </h3>
-
               <span className="mt-4 inline-flex items-center gap-3 text-white font-bold uppercase tracking-wide">
                 <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border-2 border-white/90 bg-white/0 transition-all duration-200 group-hover:bg-white/10 group-hover:scale-105">
                   <ArrowRight size={18} className="text-white" strokeWidth={2.5} />
@@ -95,7 +95,7 @@ function PromoCards({ cards = defaultCards, className }: PromoProps) {
   );
 }
 
-/* ========== Services Section (single row, horizontal scroll) ========== */
+/* ========== Services Section (GSAP horizontal scroll like your example) ========== */
 
 export function Services() {
   const services = [
@@ -103,81 +103,115 @@ export function Services() {
       title: "Birthday Bouquets",
       desc: "Bright, thoughtful arrangements full of personality and joy.",
       image: "https://images.pexels.com/photos/1616403/pexels-photo-1616403.jpeg",
-      highlights: ["Custom birthday themes", "Cheerful color palettes", "Fun-sized bouquets"],
     },
     {
       title: "Wedding Arrangements",
       desc:
         "Elegant florals for your special day, crafted to evoke romance and timeless beauty.",
       image: "https://images.pexels.com/photos/931162/pexels-photo-931162.jpeg",
-      highlights: ["Bridal bouquets", "Ceremony arches", "Reception centerpieces"],
     },
     {
       title: "Sympathy Flowers",
       desc:
         "Gentle tributes crafted with dignity and care, offering comfort in difficult times.",
       image: "https://images.pexels.com/photos/1408221/pexels-photo-1408221.jpeg",
-      highlights: ["Peaceful arrangements", "Soft tones", "Memorial tributes"],
     },
     {
       title: "Housewarming Florals",
       desc: "Welcoming arrangements that bring warmth and life to new spaces.",
       image: "https://images.pexels.com/photos/33347573/pexels-photo-33347573.jpeg",
-      highlights: ["Home-friendly plants", "Fresh greenery", "Comfort-themed bouquets"],
     },
     {
       title: "Baptism Decorations",
       desc:
         "Delicate compositions with pure white and soft pastels to honor sacred moments.",
       image: "https://images.pexels.com/photos/1408221/pexels-photo-1408221.jpeg",
-      highlights: ["Sacred symbolism", "Custom altar blooms", "Gentle tones"],
     },
     {
       title: "Corporate Events",
       desc:
         "Professional arrangements designed to impress and elevate your workspace.",
       image: "https://images.pexels.com/photos/6925158/pexels-photo-6925158.jpeg",
-      highlights: ["Grand opening florals", "Sophisticated palettes", "Client-ready styling"],
     },
   ];
 
+  const wrapperRef = useRef<HTMLDivElement>(null); // pinned section
+  const trackRef = useRef<HTMLDivElement>(null);   // flex track containing panels
+
+  useEffect(() => {
+    // Only on md+ and if user doesn’t prefer reduced motion
+    const mdUp = window.matchMedia("(min-width: 768px)").matches;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!mdUp || reduced) return;
+
+    const wrapper = wrapperRef.current;
+    const track = trackRef.current;
+    if (!wrapper || !track) return;
+
+    const panels = gsap.utils.toArray<HTMLElement>(".service-panel");
+    if (panels.length <= 1) return;
+
+    // Animate panels with xPercent like your example
+    const tween = gsap.to(panels, {
+      xPercent: -100 * (panels.length - 1),
+      ease: "none",
+      scrollTrigger: {
+        trigger: wrapper,
+        pin: true,
+        scrub: 1,
+        snap: 1 / (panels.length - 1),
+        invalidateOnRefresh: true,
+        end: () => "+=" + (track.scrollWidth - window.innerWidth),
+      },
+    });
+
+    const onResize = () => ScrollTrigger.refresh();
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      window.removeEventListener("resize", onResize);
+      tween.scrollTrigger?.kill();
+      tween.kill();
+    };
+  }, []);
+
   return (
     <>
-      {/* PromoCards above */}
       <PromoCards className="pt-12 md:pt-16 pb-0" />
 
-      {/* Services below (horizontal scroller) */}
       <section
         id="services"
-        className="px-6 py-20 bg-gradient-to-b from-rose-50 to-white font-sans text-muted-foreground"
+        className="bg-gradient-to-b from-rose-50 to-white font-sans text-muted-foreground py-20"
       >
-        <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-7xl px-6">
           <h2
             className="text-4xl font-serif text-center text-gray-900 mb-12"
             style={{ fontFamily: "Cormorant Garamond, serif" }}
           >
             Floristry for Every Occasion
           </h2>
+        </div>
 
-          {/* Horizontal scroll track */}
+        {/* Pinned wrapper on md+; native horizontal scroll on mobile */}
+        <div
+          ref={wrapperRef}
+          className="relative md:h-[560px] h-[460px] md:overflow-hidden"
+        >
           <div
-            aria-label="Services carousel"
-            className="relative"
+            ref={trackRef}
+            className="flex h-full overflow-x-auto md:overflow-visible scroll-smooth"
+            style={{ scrollSnapType: "x mandatory" }}
           >
-            <div
-              className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2"
-              // Optional: hide scrollbar on Firefox
-              style={{ scrollbarWidth: "thin" }}
-            >
-              {services.map((service, index) => (
-                <div
-                  key={index}
-                  className="snap-start flex-none w-80 sm:w-96 md:w-[26rem] lg:w-[28rem] bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
-                >
+            {services.map((s, i) => (
+              <section
+                key={i}
+                className="service-panel flex-shrink-0 w-screen h-full flex items-center justify-center px-6"
+              >
+                <div className="w-[22rem] sm:w-[26rem] lg:w-[28rem] bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                   <div className="relative overflow-hidden">
                     <img
-                      src={service.image}
-                      alt={service.title}
+                      src={s.image}
+                      alt={s.title}
                       className="w-full h-64 object-cover hover:scale-110 transition-transform duration-500"
                     />
                   </div>
@@ -187,22 +221,11 @@ export function Services() {
                       className="text-2xl font-serif text-gray-900 mb-3 text-center"
                       style={{ fontFamily: "Cormorant Garamond, serif" }}
                     >
-                      {service.title}
+                      {s.title}
                     </h3>
-                    <p className="text-gray-600 leading-relaxed mb-4 text-center">
-                      {service.desc}
+                    <p className="text-gray-600 leading-relaxed mb-6 text-center">
+                      {s.desc}
                     </p>
-                    <ul className="space-y-1 mb-6">
-                      {service.highlights.map((highlight, idx) => (
-                        <li
-                          key={idx}
-                          className="flex items-center text-sm text-gray-500 font-sans"
-                        >
-                          <span className="w-1.5 h-1.5 bg-rose-400 rounded-full mr-2" />
-                          {highlight}
-                        </li>
-                      ))}
-                    </ul>
                     <div className="text-center">
                       <a
                         href="https://enhakkore.in/"
@@ -216,13 +239,8 @@ export function Services() {
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
-
-            {/* Optional fade edges (uncomment to add visual hint of scroll)
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-6 bg-gradient-to-r from-rose-50 to-transparent" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-6 bg-gradient-to-l from-white to-transparent" />
-            */}
+              </section>
+            ))}
           </div>
         </div>
       </section>
