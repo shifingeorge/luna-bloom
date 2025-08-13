@@ -1,5 +1,5 @@
-import React from "react";
-import { ArrowRight, ExternalLink } from "lucide-react";
+import React, { useRef } from "react";
+import { ArrowRight, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 
 /* ========== Promo Cards ========== */
 
@@ -92,7 +92,7 @@ function PromoCards({ cards = defaultCards, className }: PromoProps) {
   );
 }
 
-/* ========== Services Section (auto-scroll marquee with arch cards) ========== */
+/* ========== Services Section (manual arrows, smooth scroll) ========== */
 
 export function Services() {
   const services = [
@@ -132,33 +132,22 @@ export function Services() {
     },
   ];
 
-  // Duplicate once for seamless loop
-  const loop = [...services, ...services];
+  const scrollerRef = useRef<HTMLDivElement>(null);
+
+  const scrollByCards = (dir: "left" | "right") => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const card = el.querySelector<HTMLElement>("[data-card]");
+    const cardWidth = card ? card.offsetWidth : el.clientWidth * 0.7;
+    const gap = 24; // gap-6 = 1.5rem = 24px
+    const delta = (cardWidth + gap) * (dir === "right" ? 1 : -1);
+
+    el.scrollBy({ left: delta, behavior: "smooth" });
+  };
 
   return (
     <>
       <PromoCards className="pt-12 md:pt-16 pb-0" />
-
-      {/* Inline keyframes for auto-scroll */}
-      <style>{`
-        @keyframes scroll-left {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .marquee { position: relative; overflow: hidden; }
-        .marquee-track {
-          display: flex;
-          gap: 1.5rem;
-          will-change: transform;
-          animation: scroll-left 32s linear infinite;
-          padding: 0 1.5rem; /* matches px-6 around panels */
-        }
-        .marquee:hover .marquee-track { animation-play-state: paused; }
-        @media (max-width: 768px) { .marquee-track { animation-duration: 38s; } }
-        @media (prefers-reduced-motion: reduce) {
-          .marquee-track { animation: none; transform: translateX(0) !important; }
-        }
-      `}</style>
 
       <section
         id="services"
@@ -173,58 +162,76 @@ export function Services() {
           </h2>
         </div>
 
-        {/* Auto-scrolling marquee of ARCH cards */}
-        <div className="marquee">
-          {/* Optional fade edges */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-rose-50 to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-white to-transparent" />
+        <div className="relative">
+          {/* Left Arrow */}
+          <button
+            aria-label="Scroll services left"
+            onClick={() => scrollByCards("left")}
+            className="hidden md:flex absolute left-2 top-1/2 -translate-y-1/2 z-10 h-10 w-10 items-center justify-center rounded-full bg-white/90 shadow-lg ring-1 ring-black/10 hover:bg-white transition"
+          >
+            <ChevronLeft className="h-6 w-6 text-gray-800" />
+          </button>
 
-          <div className="marquee-track">
-            {loop.map((s, i) => (
-              <section
-                key={`${s.title}-${i}`}
-                className="flex-shrink-0 w-[22rem] sm:w-[26rem] lg:w-[28rem] h-full"
-              >
-                {/* Arch-style card */}
-                <div className="group flex h-full flex-col">
-                  {/* Arch image frame */}
-                  <div className="relative overflow-hidden rounded-t-full rounded-b-none bg-neutral-100 aspect-[3/4]">
-                    <img
-                      src={s.image}
-                      alt={s.title}
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.06]"
-                    />
+          {/* Right Arrow */}
+          <button
+            aria-label="Scroll services right"
+            onClick={() => scrollByCards("right")}
+            className="hidden md:flex absolute right-2 top-1/2 -translate-y-1/2 z-10 h-10 w-10 items-center justify-center rounded-full bg-white/90 shadow-lg ring-1 ring-black/10 hover:bg-white transition"
+          >
+            <ChevronRight className="h-6 w-6 text-gray-800" />
+          </button>
+
+          {/* Scroller */}
+          <div
+            ref={scrollerRef}
+            className="mx-auto max-w-7xl px-6 overflow-x-auto scroll-smooth"
+            style={{ scrollbarWidth: "thin" }}
+          >
+            <div className="flex gap-6 pb-2">
+              {services.map((s, i) => (
+                <section
+                  key={i}
+                  data-card
+                  className="flex-shrink-0 w-[22rem] sm:w-[26rem] lg:w-[28rem]"
+                >
+                  <div className="group flex h-full flex-col">
+                    {/* Arch image frame */}
+                    <div className="relative overflow-hidden rounded-t-full rounded-b-none bg-neutral-100 aspect-[3/4]">
+                      <img
+                        src={s.image}
+                        alt={s.title}
+                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.06]"
+                      />
+                    </div>
+
+                    {/* Title underline */}
+                    <div className="mt-5 border-b border-gray-900/80 pb-3">
+                      <h3
+                        className="text-xl md:text-2xl font-serif text-gray-900"
+                        style={{ fontFamily: "Cormorant Garamond, serif" }}
+                      >
+                        {s.title}
+                      </h3>
+                    </div>
+
+                    {/* Description */}
+                    <p className="pt-3 text-gray-700 leading-relaxed">{s.desc}</p>
+
+                    {/* CTA pinned to bottom */}
+                    <div className="pt-3 mt-auto">
+                      <a
+                        href="https://enhakkore.in/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-gray-800 hover:underline"
+                      >
+                        Visit Store →
+                      </a>
+                    </div>
                   </div>
-
-                  {/* Title underline */}
-                  <div className="mt-5 border-b border-gray-900/80 pb-3">
-                    <h3
-                      className="text-xl md:text-2xl font-serif text-gray-900"
-                      style={{ fontFamily: "Cormorant Garamond, serif" }}
-                    >
-                      {s.title}
-                    </h3>
-                  </div>
-
-                  {/* Description */}
-                  <p className="pt-3 text-gray-700 leading-relaxed">
-                    {s.desc}
-                  </p>
-
-                  {/* CTA pinned to bottom */}
-                  <div className="pt-3 mt-auto">
-                    <a
-                      href="https://enhakkore.in/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-gray-800 hover:underline"
-                    >
-                      Visit Store →
-                    </a>
-                  </div>
-                </div>
-              </section>
-            ))}
+                </section>
+              ))}
+            </div>
           </div>
         </div>
       </section>
