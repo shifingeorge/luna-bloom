@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth scroll for in-page routing */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Offset sections so content isn't hidden under the sticky navbar */
+@layer utilities {
+  .section-offset {
+    scroll-margin-top: 5rem; /* matches navbar height */
+  }
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: theme('colors.background');
+  color: theme('colors.foreground');
+}
