@@ -2,6 +2,8 @@ import React, { useRef } from "react";
 import { ArrowRight, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import { href } from "react-router-dom";
 
+
+
 /* ========== Services Section (manual arrows, smooth scroll) ========== */
 
 export function Services() {

@@ -13,7 +13,7 @@ export function Footer() {
               <span className="text-xl font-bold">Luna Bloom</span>
             </div>
             <p className="text-gray-400 leading-relaxed mb-4">
-              Creating magical moments with the finest flowers for every occasion since 2008.
+              Creating magical moments with the finest flowers for every occasion since 2025.
             </p>
             <div className="flex space-x-4">
               <Facebook
@@ -91,21 +91,25 @@ export function Footer() {
 
         <div className="border-t border-gray-800 pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm">
-              © 2025 Luna Bloom. All rights reserved. | Designed with{" "}
-              <Heart className="inline w-4 h-4 text-rose-400" /> for flower lovers
+            <p className="text-gray-400 text-sm text-center md:text-left">
+              © 2025 Luna Bloom. All rights reserved. |{" "}
+              <span className="inline-flex items-center gap-1">
+                Designed with
+                <Heart className="inline w-4 h-4 text-rose-400" aria-hidden="true" />
+                by
+                <a
+                href="https://www.marketingwithnaina.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-1 text-rose-400 hover:text-rose-300 transition-colors"
+                >
+                  Nainas Digital Advertisement Agency
+                </a>
+              </span>
             </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <span className="text-gray-400 text-sm hover:text-white cursor-pointer transition-colors">
-                Privacy Policy
-              </span>
-              <span className="text-gray-400 text-sm hover:text-white cursor-pointer transition-colors">
-                Terms of Service
-              </span>
-            </div>
           </div>
         </div>
       </div>
-    </footer>
+  </footer>
   );
 }
