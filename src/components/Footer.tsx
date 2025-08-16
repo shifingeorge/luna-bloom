@@ -94,7 +94,7 @@ export function Footer() {
     <p className="text-gray-400 text-sm">
       © 2025 Luna Bloom. All rights reserved. | Designed with{" "}
       <span className="inline-flex items-baseline gap-1">
-        <Heart className="inline w-4 h-4 text-rose-400" aria-hidden="true" />
+        <Heart className="inline items-baseline w-4 h-4 text-rose-400" aria-hidden="true" />
         by
         <a
           href="https://www.marketingwithnaina.com/"
