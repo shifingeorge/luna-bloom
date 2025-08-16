@@ -90,24 +90,24 @@ export function Footer() {
         </div>
 
         <div className="border-t border-gray-800 pt-8 mt-8">
-          <div className="flex flex-col items-center justify-center text-center">
-            <p className="text-gray-400 text-sm">
-              © 2025 Luna Bloom. All rights reserved. | Designed with {" "}
-              <span className="inline-flex items-center gap-1 justify-center">
-                <Heart className="inline w-4 h-4 text-rose-400" aria-hidden="true" />
-                by
-                <a
-                href="https://www.marketingwithnaina.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ml-1 text-rose-400 hover:text-rose-300 transition-colors"
-                >
-                  Nainas Digital Advertisement Agency
-                </a>
-              </span>
-            </p>
-          </div>
-        </div>
+  <div className="flex flex-col items-center justify-center text-center">
+    <p className="text-gray-400 text-sm">
+      © 2025 Luna Bloom. All rights reserved. | Designed with{" "}
+      <span className="inline-flex items-baseline gap-1">
+        <Heart className="inline w-4 h-4 text-rose-400" aria-hidden="true" />
+        by
+        <a
+          href="https://www.marketingwithnaina.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-rose-400 hover:text-rose-300 transition-colors"
+        >
+          Nainas Digital Advertisement Agency
+        </a>
+      </span>
+    </p>
+  </div>
+</div>
       </div>
   </footer>
   );
