@@ -90,10 +90,10 @@ export function Footer() {
         </div>
 
         <div className="border-t border-gray-800 pt-8 mt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm text-center md:text-left">
+          <div className="flex flex-col items-center justify-center text-center">
+            <p className="text-gray-400 text-sm">
               © 2025 Luna Bloom. All rights reserved. |{" "}
-              <span className="inline-flex items-center gap-1">
+              <span className="inline-flex items-center gap-1 justify-center">
                 Designed with
                 <Heart className="inline w-4 h-4 text-rose-400" aria-hidden="true" />
                 by
