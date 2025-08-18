@@ -79,8 +79,8 @@ export function Footer() {
           <div>
             <h3 className="font-semibold mb-4">Contact Info</h3>
             <div className="space-y-2 text-gray-400">
-              <p>123 Bloom Street</p>
-              <p>Garden City, GC 12345</p>
+              <p>Luna bloom llp</p>
+              <p>Unnichira, Kerala 682024</p>
               <p>+918113811372</p>
               <p>Lunabloomkochi@gmail.com</p>
               <p>Mon–Sat: 8AM–7PM</p>
@@ -100,8 +100,7 @@ export function Footer() {
           href="https://www.marketingwithnaina.com/"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-rose-400 hover:text-rose-300 transition-colors"
-        >
+          className="text-rose-400 hover:text-rose-300 transition-colors">
           Nainas Digital Advertisement Agency
         </a>
       </span>

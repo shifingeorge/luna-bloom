@@ -93,9 +93,9 @@ export function Contact() {
               >
                 Visit Us
               </h3>
-              <p className="text-gray-600 font-sans">123 Bloom Street</p>
+              <p className="text-gray-600 font-sans">Luna bloom llp</p>
               <p className="text-sm text-gray-500 font-sans mt-2">
-                Garden City, GC 12345
+                Unnichira, Kerala 682024
               </p>
             </div>
           </div>
