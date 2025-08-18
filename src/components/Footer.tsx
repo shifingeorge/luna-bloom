@@ -81,8 +81,8 @@ export function Footer() {
             <div className="space-y-2 text-gray-400">
               <p>123 Bloom Street</p>
               <p>Garden City, GC 12345</p>
-              <p>Phone: 918113811372</p>
-              <p>Email: info@lunabloom.com</p>
+              <p>+918113811372</p>
+              <p>Lunabloomkochi@gmail.com</p>
               <p>Mon–Sat: 8AM–7PM</p>
               <p>Sun: 10AM–5PM</p>
             </div>
