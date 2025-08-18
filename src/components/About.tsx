@@ -21,19 +21,13 @@ export function About() {
             </h2>
             <div className="space-y-4 text-gray-600 leading-relaxed font-sans">
               <p>
-                At Luna Bloom, we believe every arrangement tells a unique story. Founded with a
-                passion for botanical artistry, we've dedicated ourselves to creating extraordinary
-                floral experiences that capture life's most precious moments.
+                At Luna Bloom, we believe every arrangement is more than just flowers—it’s a story waiting to be told. Founded from a passion for botanical artistry, we’ve dedicated ourselves to creating extraordinary floral experiences that celebrate life’s most precious moments.
               </p>
               <p>
-                Our expert florists combine traditional techniques with contemporary design, sourcing
-                the finest blooms to ensure each creation reflects the beauty and emotion of your
-                special occasion.
+                Our expert florists blend traditional techniques with contemporary design, sourcing the finest blooms to craft creations that capture both beauty and emotion. Each piece is thoughtfully made to reflect love, joy, and connection.
               </p>
               <p>
-                From intimate gatherings to grand celebrations, we craft each piece with meticulous
-                attention to detail, transforming your vision into a living work of art that speaks
-                to the heart.
+                From intimate gatherings to grand celebrations, we pour meticulous attention into every detail—transforming your vision into a living work of art. And it’s this commitment to quality, creativity, and heartfelt design that makes us the best flower shop in Kochi.
               </p>
             </div>
           </div>
