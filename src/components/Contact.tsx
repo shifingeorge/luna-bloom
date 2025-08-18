@@ -56,40 +56,53 @@ export function Contact() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+
             {/* Phone */}
-            <div className="text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <a href="tel:+918113811372"
+              className="block text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+              >
               <Phone className="w-12 h-12 text-rose-600 mx-auto mb-4" />
               <h3
-                className="text-xl font-serif text-gray-900 mb-2"
-                style={{ fontFamily: "Cormorant Garamond, serif" }}
+              className="text-xl font-serif text-gray-900 mb-2"
+              style={{ fontFamily: "Cormorant Garamond, serif" }}
               >
                 Call Us
-              </h3>
-              <p className="text-gray-600 font-sans">+918113811372</p>
-              <p className="text-sm text-gray-500 font-sans mt-2">Mon–Sat: 8AM–7PM</p>
-            </div>
+                </h3>
+                <p className="text-gray-600 font-sans">+91 81138 11372</p>
+                <p className="text-sm text-gray-500 font-sans mt-2">
+                  Mon–Sat: 8AM–7PM
+                </p>
+            </a>
 
             {/* Email */}
-            <div className="text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <Mail className="w-12 h-12 text-rose-600 mx-auto mb-4" />
-              <h3
+            <a
+              href="mailto:Lunabloomkochi@gmail.com"
+              className="block text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+              >
+                <Mail className="w-12 h-12 text-rose-600 mx-auto mb-4" />
+                <h3
                 className="text-xl font-serif text-gray-900 mb-2"
                 style={{ fontFamily: "Cormorant Garamond, serif" }}
-              >
-                Email Us
-              </h3>
-              <p className="text-gray-600 font-sans">Lunabloomkochi@gmail.com</p>
-              <p className="text-sm text-gray-500 font-sans mt-2">
-                We reply within 24 hours
-              </p>
-            </div>
+                >
+                  Email Us
+                  </h3>
+                  <p className="text-gray-600 font-sans">Lunabloomkochi@gmail.com</p>
+                  <p className="text-sm text-gray-500 font-sans mt-2">
+                    We reply within 24 hours
+                  </p>
+            </a>
 
             {/* Visit */}
-            <div className="text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <a
+            href="https://www.google.com/maps/place/Luna+bloom+llp/@10.0267929,76.3117914,17z/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+            >
               <MapPin className="w-12 h-12 text-rose-600 mx-auto mb-4" />
               <h3
-                className="text-xl font-serif text-gray-900 mb-2"
-                style={{ fontFamily: "Cormorant Garamond, serif" }}
+              className="text-xl font-serif text-gray-900 mb-2"
+              style={{ fontFamily: "Cormorant Garamond, serif" }}
               >
                 Visit Us
               </h3>
@@ -97,7 +110,7 @@ export function Contact() {
               <p className="text-sm text-gray-500 font-sans mt-2">
                 Unnichira, Kerala 682024
               </p>
-            </div>
+            </a>
           </div>
         </div>
       </section>
