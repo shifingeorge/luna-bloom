@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { ArrowRight, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import { href } from "react-router-dom";
+import { useEffect } from "react";
 
 
 
@@ -59,6 +60,24 @@ export function Services() {
 
     el.scrollBy({ left: delta, behavior: "smooth" });
   };
+
+  // 👇 Nudge scroll on mobile to hint interactivity
+  useEffect(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    if (window.innerWidth >= 768) return; // Only for mobile
+
+    const timeout = setTimeout(() => {
+      el.scrollBy({ left: 80, behavior: "smooth" });
+      setTimeout(() => {
+        el.scrollBy({ left: -80, behavior: "smooth" });
+      }, 600);
+    }, 800); // wait a bit after mount
+
+    return () => clearTimeout(timeout);
+  }, []);
+
+
 
   return (
     <>
