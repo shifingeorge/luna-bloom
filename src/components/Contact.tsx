@@ -42,8 +42,8 @@ export function Contact() {
           Get directions
         </a>
         <span className="text-gray-300">•</span>
-        <a href="tel:+91123456789" className="text-sm text-gray-700 hover:underline">
-          +91 12345 6789
+        <a href="tel:+918113811372" className="text-sm text-gray-700 hover:underline">
+          918113811372
         </a>
       </div>
     </div>
@@ -65,7 +65,7 @@ export function Contact() {
               >
                 Call Us
               </h3>
-              <p className="text-gray-600 font-sans">+91 12345 6789</p>
+              <p className="text-gray-600 font-sans">+918113811372</p>
               <p className="text-sm text-gray-500 font-sans mt-2">Mon–Sat: 8AM–7PM</p>
             </div>
 

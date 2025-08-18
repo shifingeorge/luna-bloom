@@ -9,7 +9,6 @@ import { Footer } from "../components/Footer";
 import { PromoCard } from "../components/threepromcards";
 
 
-
 export default function Home() {
   return (
     <div className="bg-background text-foreground font-sans">
@@ -24,4 +23,4 @@ export default function Home() {
       <Footer />
     </div>
   );
-}
+} 
