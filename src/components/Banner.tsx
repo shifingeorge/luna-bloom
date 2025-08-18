@@ -125,7 +125,9 @@ export function Banner() {
                     style={{ fontFamily: "Cormorant Garamond, serif" }}
                   >
                     <span className="relative inline-block">
-                      Where Art and Nature Blossom
+                      Where Every Petal is a 
+                      <br/>
+                      Work of Art
                       <span
                         className="absolute -bottom-2 left-0 h-3 w-full rounded bg-rose-200/25 blur-[2px]"
                         aria-hidden="true"
@@ -134,10 +136,8 @@ export function Banner() {
                   </h1>
 
                   <p className="mt-6 font-sans text-base md:text-xl leading-relaxed text-white/95 drop-shadow-[0_3px_12px_rgba(0,0,0,0.35)]">
-                    Welcome to Luna Bloom, an artisanal floral studio where every petal tells a story.
-                    We believe in the quiet power of flowers to transform spaces, convey emotions,
-                    and create lasting memories. Discover our curated collections, crafted with passion
-                    and purpose.
+                    Welcome to Luna Bloom, the best flower shop in Kochi.
+                    An artisanal floral studio where every bloom is thoughtfully crafted to tell a story. We believe in the timeless power of flowers to brighten spaces, express emotions, and create lasting memories.
                   </p>
 
                   <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row md:justify-start md:items-center">
