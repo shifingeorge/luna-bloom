@@ -10,39 +10,38 @@ export function Services() {
   const services = [
     {
       title: "Birthday Decorations",
-      desc: "Bright, thoughtful arrangements full of personality and joy.",
+      desc: "Celebrate birthdays with vibrant arrangements that radiate joy and warmth. Our dedication to creating unforgettable celebrations is what makes us the best flower shop in Kochi.",
       image: "https://images.pexels.com/photos/1616403/pexels-photo-1616403.jpeg",
       href: "https://enhakkore.in/products/62/birthday_decoration"
     },
     {
       title: "Wedding Decorations",
       desc:
-        "Elegant florals for your special day, crafted to evoke romance and timeless beauty.",
+        "Transform your special day with elegant florals designed to evoke romance and timeless beauty. With passion, precision, and artistry, we create wedding moments that truly make us the best flower shop in Kochi.",
       image: "https://images.pexels.com/photos/931162/pexels-photo-931162.jpeg",
       href: "https://enhakkore.in/products/68/wedding_decoration_"
     },
     {
       title: "Thomp Decorations",
-      desc:"Gentle tributes crafted with dignity and care, offering comfort in difficult times.",
+      desc:"Honoring memories with gentle tributes, crafted with dignity and heartfelt care. Our compassionate approach to floral artistry is what makes us the best flower shop in Kochi.",
       image: "https://images.pexels.com/photos/1408221/pexels-photo-1408221.jpeg",
       href: "https://enhakkore.in/products/71/thomp_decoration_"
     },
     {
       title: "Housewarming Florals",
-      desc: "Welcoming arrangements that bring warmth and life to new spaces.",
+      desc: "Celebrate new beginnings with welcoming arrangements that bring warmth and life to every home.Our thoughtful designs and elegant blooms make us the best flower shop in Kochi.",
       image: "https://images.pexels.com/photos/33347573/pexels-photo-33347573.jpeg",
       href: "https://enhakkore.in/products/63/house_warming"
     },
     {
       title: "Baptism Decorations",
-      desc:
-        "Delicate compositions with pure white and soft pastels to honor sacred moments.",
+      desc:"Delicate arrangements in pure white and soft pastels to honor life’s most sacred moments. Crafted with grace and devotion, these floral tributes reflect why we are the best flower shop in Kochi.",
       image: "https://images.pexels.com/photos/1408221/pexels-photo-1408221.jpeg",
       href: "https://enhakkore.in/products/62/birthday_decoration"
     },
     {
       title: "Corporate Events",
-      desc:"Professional arrangements designed to impress and elevate your workspace.",
+      desc:"Professional floral arrangements designed to impress clients, inspire teams, and elevate any workspace. Our creative touch and attention to detail make us the best flower shop in Kochi for corporate décor.",
       image: "https://images.pexels.com/photos/6925158/pexels-photo-6925158.jpeg",
       href: "https://enhakkore.in/products/64/shop_inaugration"
     },
