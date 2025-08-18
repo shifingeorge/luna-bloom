@@ -59,9 +59,11 @@ export function Contact() {
 
             {/* Phone */}
             <a href="tel:+918113811372"
-              className="block text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+              className="block text-center p-6  hover:shadow-xl transition-shadow duration-300"
               >
-              <Phone className="w-12 h-12 text-rose-600 mx-auto mb-4" />
+              <div className="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Phone className="w-10 h-10 text-rose-600" />
+              </div>
               <h3
               className="text-xl font-serif text-gray-900 mb-2"
               style={{ fontFamily: "Cormorant Garamond, serif" }}
@@ -77,9 +79,11 @@ export function Contact() {
             {/* Email */}
             <a
               href="mailto:Lunabloomkochi@gmail.com"
-              className="block text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+              className="block text-center p-6  hover:shadow-xl transition-shadow duration-300"
               >
-                <Mail className="w-12 h-12 text-rose-600 mx-auto mb-4" />
+                <div className="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Mail className="w-10 h-10 text-rose-600" />
+                </div>
                 <h3
                 className="text-xl font-serif text-gray-900 mb-2"
                 style={{ fontFamily: "Cormorant Garamond, serif" }}
@@ -97,9 +101,11 @@ export function Contact() {
             href="https://www.google.com/maps/place/Luna+bloom+llp/@10.0267929,76.3117914,17z/"
             target="_blank"
             rel="noopener noreferrer"
-            className="block text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+            className="block text-center p-6 hover:shadow-xl transition-shadow duration-300"
             >
-              <MapPin className="w-12 h-12 text-rose-600 mx-auto mb-4" />
+              <div className="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <MapPin className="w-10 h-10 text-rose-600" />
+              </div>
               <h3
               className="text-xl font-serif text-gray-900 mb-2"
               style={{ fontFamily: "Cormorant Garamond, serif" }}
