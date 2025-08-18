@@ -12,21 +12,21 @@ export function Products() {
     {
       title: "Fresh Flowers",
       desc:
-        "The ephemeral beauty of nature, captured in vibrant, hand-tied bouquets. Our fresh flowers are sourced daily to ensure unparalleled quality and longevity.",
+        "At Luna Bloom, the best flower shop in Kochi, we celebrate the fleeting beauty of nature through vibrant, hand-tied bouquets. Our fresh flowers are carefully sourced every day to ensure unmatched quality, fragrance, and longevity—perfect for making every moment unforgettable.",
       image: "https://images.pexels.com/photos/1408221/pexels-photo-1408221.jpeg",
       href: "https://enhakkore.in/products/127/fresh_flower",
     },
     {
       title: "Artificial Flowers",
       desc:
-        "The art of illusion. Our collection of premium, real-touch artificial flowers offers all the beauty of fresh blooms with none of the maintenance.",
+        "Discover the art of illusion at Luna Bloom, the best flower shop in Kochi. Our collection of premium, real-touch artificial flowers captures the beauty and charm of fresh blooms—without the need for maintenance. Perfect for timeless décor, thoughtful gifts, and everlasting elegance.",
       image: "https://images.pexels.com/photos/33360452/pexels-photo-33360452.jpeg",
       href: "https://enhakkore.in/products/128/artificial_flower",
     },
     {
       title: "Dry Flowers",
       desc:
-        "Everlasting beauty for the modern home. Our dried and preserved arrangements offer timeless elegance and a sustainable way to enjoy nature's artistry.",
+        "At Luna Bloom, the best flower shop in Kochi, we bring you everlasting beauty through our dried and preserved arrangements. Designed for the modern home, these creations offer timeless elegance, sustainability, and a unique way to enjoy nature’s artistry—long after the season has passed.",
       image: "https://images.pexels.com/photos/1799303/pexels-photo-1799303.jpeg",
       href: "https://enhakkore.in/products/153/dry_flower",
     },
