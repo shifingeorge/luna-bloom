@@ -15,23 +15,28 @@ export function Navbar() {
   return (
     <header className="bg-white shadow-sm">
       {/* Top Contact Bar (centered) */}
-      <div className="bg-rose-300 text-white py-2">
+      <div className="bg-rose-300 text-black py-2">
         <div className="max-w-7xl mx-auto px-4 flex justify-center items-center gap-6 flex-wrap">
           <div className="flex items-center gap-2">
             <Phone size={14} />
-            <a href="tel:+918113811372" className="text-sm text-rose-50 hover:underline">
+            <a
+            href="tel:+918113811372"
+            className="text-sm text-black hover:underline"
+            >
               +91 81138 11372
             </a>
-          </div>
-          <div className="flex items-center gap-2">
-            <Mail size={14} />
-            <a href="mailto:Lunabloomkochi@gmail.com" className="text-sm text-rose-50 hover:underline">
-              Lunabloomkochi@gmail.com
-            </a>
+            </div>
+            <div className="flex items-center gap-2">
+              <Mail size={14} />
+              <a
+              href="mailto:Lunabloomkochi@gmail.com"
+              className="text-sm text-black hover:underline"
+              >
+                Lunabloomkochi@gmail.com
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-
       {/* Special Offer Banner text only*/}
       <div className="bg-rose-200 text-gray-800 py-3">
         <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
