@@ -12,23 +12,35 @@ export function Footer() {
               <Heart className="text-rose-400" size={24} />
               <span className="text-xl font-bold">Luna Bloom</span>
             </div>
-            <p className="text-gray-400 leading-relaxed mb-4">
-              Creating magical moments with the finest flowers for every occasion since 2025.
-            </p>
-            <div className="flex space-x-4">
-              <Facebook
-                size={20}
-                className="text-gray-400 hover:text-rose-400 cursor-pointer transition-colors"
-              />
-              <Instagram
-                size={20}
-                className="text-gray-400 hover:text-rose-400 cursor-pointer transition-colors"
-              />
-              <Twitter
-                size={20}
-                className="text-gray-400 hover:text-rose-400 cursor-pointer transition-colors"
-              />
-            </div>
+              
+              <p className="text-gray-400 leading-relaxed mb-4">
+                Creating magical moments with the finest flowers for every occasion since 2025.
+              </p>
+                
+                <div className="flex space-x-4">
+                  <a
+                  href="https://www.facebook.com/lunabloom_flowershop"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Luna Bloom Facebook"
+                  >
+                    <Facebook
+                    size={20}
+                    className="text-gray-400 hover:text-rose-400 cursor-pointer transition-colors"
+                    />
+                  </a>
+                  <a
+                  href="https://www.instagram.com/lunabloom_flowershop/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Luna Bloom Instagram"
+                  >
+                    <Instagram
+                    size={20}
+                    className="text-gray-400 hover:text-rose-400 cursor-pointer transition-colors"
+                    />
+                  </a>
+                </div>
           </div>
 
           {/* Quick Links */}
