@@ -114,7 +114,7 @@ export function Contact() {
               </h3>
               <p className="text-gray-600 font-sans">Luna bloom llp</p>
               <p className="text-sm text-gray-500 font-sans mt-2">
-                Unnichira, Kerala 682024
+                Unichira, Kerala 682024
               </p>
             </a>
           </div>
