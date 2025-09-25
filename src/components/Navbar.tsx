@@ -32,7 +32,7 @@ export function Navbar() {
               href="mailto:Lunabloomkochi@gmail.com"
               className="text-sm text-black hover:underline"
               >
-                Lunabloomkochi@gmail.com
+                lunabloomllp@gmail.com
               </a>
             </div>
           </div>
