@@ -90,7 +90,7 @@ export function Contact() {
                 >
                   Email Us
                   </h3>
-                  <p className="text-gray-600 font-sans">Lunabloomkochi@gmail.com</p>
+                  <p className="text-gray-600 font-sans">lunabloomllp@gmail.com</p>
                   <p className="text-sm text-gray-500 font-sans mt-2">
                     We reply within 24 hours
                   </p>
