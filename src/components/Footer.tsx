@@ -94,7 +94,7 @@ export function Footer() {
               <p>Luna bloom llp</p>
               <p>Unichira, Kerala 682024</p>
               <p>+918113811372</p>
-              <p>Lunabloomkochi@gmail.com</p>
+              <p>lunabloomllp@gmail.com</p>
               <p>Mon–Sat: 8AM–7PM</p>
               <p>Sun: 10AM–5PM</p>
             </div>
@@ -113,7 +113,7 @@ export function Footer() {
           target="_blank"
           rel="noopener noreferrer"
           className="text-rose-400 hover:text-rose-300 transition-colors">
-          Nainas Digital Advertisement Agency
+          Nainas Digital Advertisement Group
         </a>
       </span>
     </p>
